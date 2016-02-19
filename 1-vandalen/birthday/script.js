@@ -1,23 +1,44 @@
 "use strict";
 
 window.onload = function(){
+	
+	
 
 	
-	var birthday = function(date){
+		var birthday = function(date)
 		
+		{ 
+		    var nowDate = new Date(); 
+		    var userDate = new Date(date);
+		    var day = (1000*60*60*24); // Millesekunder, sekunder, minuter, timmar.
+		
+		var myBirthday = 0;
+		
+		    
+		    
+		    
+		myBirthday = Math.ceil((userDate.getTime() - nowDate.getTime())/day);    // Math.ceil avrundar uppåt. Anledningen är att programmet ska ge rätt antal dagar även om klockan är före 12.
+		
+        if (date === "")
+		{
+        throw new Error (" Ange ett riktigt datum!")
+		}
+        
+        if (myBirthday <= -1)
+		{
+            return userDate.setFullYear(nowDate.getFullYear())+1; // Här har jag bestämmt att ett år just är 365 dagar. Detta gör att programmet inte behandlar skottår.
+		}    
+        if (myBirthday === nowDate)
+        {    
+            return 0;  // 0 hänvisar till första caset.
+        }
+        if (myBirthday + 1 === nowDate)
+        {
+            return 1; // 1 hänvisar till andra caset.
+		}    
+};
 
-
-			// Din kod här.
-
-
-
-
-	};
-	// ------------------------------------------------------------------------------
-
-
-	// Kod för att hantera utskrift och inmatning. Denna ska du inte behöva förändra
-	var p = document.querySelector("#value"); // Referens till DOM-noden med id="#value"
+var p = document.querySelector("#value"); // Referens till DOM-noden med id="#value"
 	var input = document.querySelector("#string");
 	var submit = document.querySelector("#send");
 
